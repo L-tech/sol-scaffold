@@ -1,5 +1,5 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
-import { Keypair, SystemProgram, Transaction, TransactionSignature, PublicKey } from '@solana/web3.js';
+import { Keypair, SystemProgram, Transaction, TransactionSignature, PublicKey, TransactionInstruction, Connection } from '@solana/web3.js';
 import { createTransferCheckedInstruction, getOrCreateAssociatedTokenAccount, TOKEN_PROGRAM_ID,transferChecked} from "@solana/spl-token";
 import { FC, useCallback } from 'react';
 import { notify } from "../utils/notifications";
@@ -44,11 +44,24 @@ export const TransferToken: FC = () => {
                   6 // token decimals
                 )
               );
+            //   add transaction details - params and units
+              await tx.add(
+                new TransactionInstruction({
+                  keys: [{ pubkey: publicKey, isSigner: true, isWritable: true }],
+                  data: Buffer.from("PACKAGE_PRO_FIRST", "utf-8"),
+                  programId: new PublicKey("MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr"),
+                })
+              );
 
             signature = await sendTransaction(tx, connection);
 
             await connection.confirmTransaction(signature, 'confirmed');
             notify({ type: 'success', message: 'Transaction successful!', txid: signature });
+            const RPC = 'https://api.devnet.solana.com/';
+            const SOLANA_CONNECTION = new Connection(RPC);
+            let signatureDetail = await SOLANA_CONNECTION.getSignaturesForAddress(publicKey);
+            console.log('Fetched Memo: ', signatureDetail[0].memo);
+            console.log('Fetched Memo: ', signatureDetail[0].signature);
         } catch (error: any) {
             notify({ type: 'error', message: `Transaction failed!`, description: error?.message, txid: signature });
             console.log('error', `Transaction failed! ${error?.message}`, signature);

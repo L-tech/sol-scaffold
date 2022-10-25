@@ -2,7 +2,8 @@
 import { FC } from "react";
 import { SignMessage } from '../../components/SignMessage';
 import { SendTransaction } from '../../components/SendTransaction';
-import { TransferToken } from '../../components/TransferToken';
+import { TransferToken } from '../../components/TransferSPLToken';
+import { TransferSolToken } from '../../components/TransferSol';
 
 export const BasicsView: FC = ({ }) => {
 
@@ -17,6 +18,7 @@ export const BasicsView: FC = ({ }) => {
           <SignMessage/>
           <SendTransaction />
           <TransferToken />
+          <TransferSolToken />
         </div>
       </div>
     </div>

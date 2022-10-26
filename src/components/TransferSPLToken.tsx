@@ -40,7 +40,7 @@ export const TransferToken: FC = () => {
                   mintPubkey, // mint
                   tokenAccountYPubkey, // to (should be a token account)
                   publicKey, // from's owner
-                  1e8, // amount to be paid
+                  1000000, // amount to be paid
                   6 // token decimals
                 )
               );
@@ -57,11 +57,6 @@ export const TransferToken: FC = () => {
 
             await connection.confirmTransaction(signature, 'confirmed');
             notify({ type: 'success', message: 'Transaction successful!', txid: signature });
-            const RPC = 'https://api.devnet.solana.com/';
-            const SOLANA_CONNECTION = new Connection(RPC);
-            let signatureDetail = await SOLANA_CONNECTION.getSignaturesForAddress(publicKey);
-            console.log('Fetched Memo: ', signatureDetail[0].memo);
-            console.log('Fetched Memo: ', signatureDetail[0].signature);
         } catch (error: any) {
             notify({ type: 'error', message: `Transaction failed!`, description: error?.message, txid: signature });
             console.log('error', `Transaction failed! ${error?.message}`, signature);

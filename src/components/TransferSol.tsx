@@ -16,11 +16,11 @@ export const TransferSolToken: FC = () => {
         if (!publicKey) {
             notify({ type: 'error', message: `Wallet not connected!` });
             console.log('error', `Send Transaction: Wallet not connected!`);
-            return;
+            return; 
         }
         let signature: TransactionSignature = '';
         try {
-            const lamportsToSend = 1e8;
+            const lamportsToSend = 1e9; //9 decimals
             const tx = new Transaction().add(
                 SystemProgram.transfer({
                   fromPubkey: publicKey,

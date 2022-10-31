@@ -353,10 +353,10 @@
   dependencies:
     buffer "~6.0.3"
 
-"@solana/spl-token@^0.3.4":
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/@solana/spl-token/-/spl-token-0.3.4.tgz#e76c8bbf3fca5f541e4a1537ac646cb354e2cfbd"
-  integrity sha512-Mi1vk6qf9eeXjB5X6GKo0ePbOorl/CpTqQediohhjefYmanH2K9KxpckUfwV8VQkWSNTKCyrTfkyDWuljFBVNw==
+"@solana/spl-token@^0.3.6":
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/@solana/spl-token/-/spl-token-0.3.6.tgz#35473ad2ed71fe91e5754a2ac72901e1b8b26a42"
+  integrity sha512-P9pTXjDIRvVbjr3J0mCnSamYqLnICeds7IoH1/Ro2R9OBuOHdp5pqKZoscfZ3UYrgnCWUc1bc9M2m/YPHjw+1g==
   dependencies:
     "@solana/buffer-layout" "^4.0.0"
     "@solana/buffer-layout-utils" "^0.2.0"

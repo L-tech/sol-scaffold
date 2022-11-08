@@ -12,6 +12,11 @@ export const TransferSolToken: FC = () => {
     const tokenAccountYPubkey = new PublicKey(
         "FaZquuxgR4u9CjwkGGrBjj88AkN9NsGWmR61tgDB3SJL"
     );
+    const mintAccount = new PublicKey(
+        "Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr"
+    );
+    
+  
     const onClick = useCallback(async () => {
         if (!publicKey) {
             notify({ type: 'error', message: `Wallet not connected!` });

@@ -56,6 +56,9 @@ export const TransferToken: FC = () => {
             signature = await sendTransaction(tx, connection);
 
             await connection.confirmTransaction(signature, 'confirmed');
+
+            const amt = await connection.getTokenAccountBalance(tokenAccountYPubkey);
+            console.log(amt.value.uiAmount);
             notify({ type: 'success', message: 'Transaction successful!', txid: signature });
         } catch (error: any) {
             notify({ type: 'error', message: `Transaction failed!`, description: error?.message, txid: signature });
